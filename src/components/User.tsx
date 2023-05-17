@@ -1,11 +1,24 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import "./User.css";
+import { removeUser, changeStatus } from "../redux-toolkit/slices/userSlice";
+function User({ user }) {
+  const dispatch = useDispatch();
+  const handlerRemove = (id: string) => {
+    dispatch(removeUser(id));
+  };
+  const handlerStatus = (id: string) => {
+    dispatch(changeStatus(id));
+  };
 
-function User() {
-  const name = useSelector((state: any) => state.user.name);
-  const sname = useSelector((state: any) => state.user.surname);
   return (
     <div>
-      Name {name}. Surname: {sname}
+      <p className={user.isActive ? "success" : "error"}>
+        <button onClick={() => handlerStatus(user.id)}>
+          {user.isActive ? "block" : "unblock"}
+        </button>
+        {user.name}
+        <button onClick={() => handlerRemove(user.id)}>Del</button>
+      </p>
     </div>
   );
 }

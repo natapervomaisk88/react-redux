@@ -2,12 +2,13 @@ import { useDispatch } from "react-redux";
 import { useRef } from "react";
 import { addUser } from "../redux-toolkit/slices/userSlice";
 import { v4 } from "uuid";
+import { IUser } from "../redux-toolkit/interfaces/IUser";
 
 function UserForm() {
   const dispatch = useDispatch();
   const inputRef: any = useRef();
   const handlerAddUser = () => {
-    const user = {
+    const user: IUser = {
       id: v4(),
       name: inputRef.current.value,
       isActive: true,
