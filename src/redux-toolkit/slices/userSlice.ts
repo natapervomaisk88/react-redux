@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = {
+import { IUser } from "../interfaces/IUser";
+
+interface IUserState {
+  users: IUser[];
+}
+const initialState: IUserState = {
   users: [],
 };
 
@@ -11,10 +16,14 @@ export const userSlice = createSlice({
       state.users.push(action.payload);
     },
     removeUser: (state, action) => {
-      state.users = state.users.filter((user) => user.id !== action.payload);
+      state.users = state.users.filter(
+        (user: IUser) => user.id !== action.payload
+      );
     },
     changeStatus: (state, action) => {
-      const toogleUser = state.users.find((user) => user.id === action.payload);
+      const toogleUser: any = state.users.find(
+        (user: IUser) => user.id === action.payload
+      );
       toogleUser.isActive = !toogleUser.isActive;
     },
   }, //функции

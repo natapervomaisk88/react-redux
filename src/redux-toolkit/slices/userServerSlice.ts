@@ -4,7 +4,7 @@ const initialState = {
   users: [],
 };
 
-export const getUsers = createAsyncThunk(
+export const getUsers: any = createAsyncThunk(
   "user/getUsers",
   async (_, { rejectWithValue, dispatch }) => {
     const res = await axios.get("http://localhost:3000/users");

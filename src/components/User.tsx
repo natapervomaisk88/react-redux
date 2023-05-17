@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./User.css";
 import { removeUser, changeStatus } from "../redux-toolkit/slices/userSlice";
-function User({ user }) {
+function User({ user }: any) {
   const dispatch = useDispatch();
   const handlerRemove = (id: string) => {
     dispatch(removeUser(id));

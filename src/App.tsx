@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "./redux-toolkit/slices/userServerSlice";
 
 function App() {
-  const users = useSelector((state) => state.user.users);
+  const users = useSelector((state: any) => state.user.users);
   const dispatch = useDispatch();
   const handlerGetData = () => {
     dispatch(getUsers());
