@@ -3,10 +3,15 @@ import reduxLogo from "/redux.svg";
 import "./App.css";
 import UserForm from "./components/UserForm";
 import User from "./components/User";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "./redux-toolkit/slices/userServerSlice";
 
 function App() {
   const users = useSelector((state) => state.user.users);
+  const dispatch = useDispatch();
+  const handlerGetData = () => {
+    dispatch(getUsers());
+  };
   return (
     <>
       <div>
@@ -28,6 +33,8 @@ function App() {
           <h3>No users</h3>
         )}
       </div>
+
+      <button onClick={handlerGetData}>GET DATA</button>
     </>
   );
 }

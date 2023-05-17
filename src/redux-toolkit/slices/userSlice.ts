@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IUser } from "../interfaces/IUser";
 const initialState = {
   users: [],
 };
